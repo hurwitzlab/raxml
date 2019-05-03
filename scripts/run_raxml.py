@@ -22,13 +22,13 @@ def get_args():
     parser.add_argument(
         'file', metavar='FILE', nargs='+', help='Input file(s)')
 
-    # parser.add_argument(
-    #     '-a',
-    #     '--arg',
-    #     help='A named string argument',
-    #     metavar='str',
-    #     type=str,
-    #     default='')
+    parser.add_argument(
+        '-b',
+        '--binary',
+        help='Name of RaxML binary',
+        metavar='str',
+        type=str,
+        default='raxmlHPC-PTHREADS-AVX')
 
     parser.add_argument(
         '-T',
@@ -89,11 +89,10 @@ def run_job_file(jobfile, msg='Running job', procs=1):
 def main():
     """Make a jazz noise here"""
     args = get_args()
+    raxml = args.binary
+    num_threads = args.threads
 
     jobfile = tempfile.NamedTemporaryFile(delete=False, mode='wt')
-
-    raxml = 'raxmlHPC'
-    num_threads = args.threads
     cmd = '{} -m PROTGAMMAAUTO -s {} -T {} -p 12345 -x 12345 -o {} -n TEST -f a -N 1000'
 
     for file in args.file:
