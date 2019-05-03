@@ -92,7 +92,7 @@ def main():
 
     jobfile = tempfile.NamedTemporaryFile(delete=False, mode='wt')
 
-    raxml = 'singularity exec raxml-8.2.12.img raxml'
+    raxml = 'raxmlHPC'
     cmd = '{} -m PROTGAMMAAUTO -s {} -p 12345 -x 12345 -o {} -n TEST -f a -N 1000'
 
     for file in args.file:
