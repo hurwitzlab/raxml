@@ -96,7 +96,7 @@ def main():
     cmd = '{} -m PROTGAMMAAUTO -s {} -T {} -p 12345 -x 12345 -o {} -n TEST -f a -N 1000'
 
     for file in args.file:
-        jobfile.write(cmd.format(raxml, num_threads, file, 'STR0027663'))
+        jobfile.write(cmd.format(raxml, file, num_threads, 'STR0027663'))
 
     jobfile.close()
 
