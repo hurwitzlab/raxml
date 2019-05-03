@@ -5,11 +5,11 @@ From: r-base:3.5.2
     PATH=/app/raxml/scripts:$PATH
 
 %runscript
-    exec raxmlHPC
+    exec /app/raxml/scripts/run_raxml.py
 
 %post
     apt-get update
-    apt-get install -y git python3 python3-pip wget build-essential
+    apt-get install -y git python3 python3-pip wget build-essential parallel
 
     mkdir /app
     cd /app
