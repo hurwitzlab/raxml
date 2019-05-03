@@ -30,13 +30,13 @@ def get_args():
     #     type=str,
     #     default='')
 
-    # parser.add_argument(
-    #     '-i',
-    #     '--int',
-    #     help='A named integer argument',
-    #     metavar='int',
-    #     type=int,
-    #     default=0)
+    parser.add_argument(
+        '-T',
+        '--threads',
+        help='Number of threads',
+        metavar='int',
+        type=int,
+        default=12)
 
     # parser.add_argument(
     #     '-f', '--flag', help='A boolean flag', action='store_true')
@@ -93,10 +93,11 @@ def main():
     jobfile = tempfile.NamedTemporaryFile(delete=False, mode='wt')
 
     raxml = 'raxmlHPC'
-    cmd = '{} -m PROTGAMMAAUTO -s {} -p 12345 -x 12345 -o {} -n TEST -f a -N 1000'
+    num_threads = args.threads
+    cmd = '{} -m PROTGAMMAAUTO -s {} -T {} -p 12345 -x 12345 -o {} -n TEST -f a -N 1000'
 
     for file in args.file:
-        jobfile.write(cmd.format(raxml, file, 'STR0027663'))
+        jobfile.write(cmd.format(raxml, num_threads, file, 'STR0027663'))
 
     jobfile.close()
 

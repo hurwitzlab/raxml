@@ -21,7 +21,7 @@ From: r-base:3.5.2
 
     cd standard-RAxML-8.2.12
 
-    make -f Makefile.gcc
+    make -f Makefile.AVX.PTHREADS.gcc
 
     rm *.o
 
