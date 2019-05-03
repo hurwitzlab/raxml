@@ -1,0 +1,33 @@
+BootStrap: docker
+From: r-base:3.5.2
+
+%environment
+    PATH=/app/raxml/scripts:$PATH
+
+%runscript
+    exec raxmlHPC
+
+%post
+    apt-get update
+    apt-get install -y git python3 python3-pip wget build-essential
+
+    mkdir /app
+    cd /app
+    git clone https://github.com/hurwitzlab/raxml.git
+
+    wget https://github.com/stamatak/standard-RAxML/archive/v8.2.12.tar.gz
+
+    tar xvf v8.2.12.tar.gz
+
+    cd standard-RAxML-8.2.12
+
+    make -f Makefile.gcc
+
+    rm *.o
+
+    cp raxmlHPC /usr/local/bin
+
+    # Mount points for TACC directories
+    mkdir /home1
+    mkdir /scratch
+    mkdir /work
