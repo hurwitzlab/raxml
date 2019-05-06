@@ -93,7 +93,7 @@ def main():
     num_threads = args.threads
 
     jobfile = tempfile.NamedTemporaryFile(delete=False, mode='wt')
-    cmd = '{} -m PROTGAMMAAUTO -s {} -T {} -p 12345 -x 12345 -o {} -n TEST -f a -N 1000'
+    cmd = '{} -m PROTGAMMAAUTO -s {} -T {} -p 12345 -o {} -n TEST -f d'
 
     for file in args.file:
         jobfile.write(cmd.format(raxml, file, num_threads, 'STR0027663'))
